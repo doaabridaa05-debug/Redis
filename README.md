@@ -26,8 +26,8 @@ A high-performance in-memory database engine written **from scratch in C/C++**, 
 5. **Multithreading & Asynchronous Tasks**
    - **Thread Pool**: Implementation of a producer-consumer model secured by mutexes and condition variables (`pthread`) to offload heavy destructions (such as purging massive structures) to the background without freezing the event loop.
 
-6. **Pseudo-SQL Interface**
-   - An integrated textual mini-parser enabling interaction with the server using `SELECT`, `INSERT`, and `DELETE` queries.
+6. **Clé-Valeur de base (GET, SET, DEL)**
+   - An integrated textual mini-parser enabling interaction with the server using `GET`, `SET`, and `DEL` queries.
 
 ---
 
@@ -40,7 +40,7 @@ A high-performance in-memory database engine written **from scratch in C/C++**, 
 ├── zset.cpp/.h         # Sorted Sets implementation (Hash Table + AVL)
 ├── heap.cpp/.h         # Min-Heap for TTL management
 ├── thread_pool.cpp/.h  # Multithreaded thread pool (mutexes & condvars)
-└── sql_client.py       # Interactive testing and administration client
+└── client.py       # Interactive testing and administration client
 ```
 
 ##▶️ PROGRAM EXECUTION :
@@ -54,24 +54,15 @@ g++ -Wall -Wextra -O2 -g server.cpp hashtable.cpp avl.cpp zset.cpp heap.cpp thre
 ```code
 ./server
 ```
-3. To test the program, you need a client file such as sql_client.py. In another terminal , run:
+3. To test the program, you need a client file such as client.py. In another terminal , run:
 
  ```code
-python3 sql_client.py
-```
-4. You can then test the following commands interactively:
-
-```code
-INSERT INTO kv VALUES ('nom', 'alice');
-SELECT nom;
-DELETE FROM kv WHERE key = 'nom';
+python3 client.py
 ```
 
-<img width="763" height="125" alt="image" src="https://github.com/user-attachments/assets/b088ab1d-7be2-4d9e-8b46-bc6e753f2bc9" />
 
-Run the commands in the client test terminal and observe the results in the other terminal:
+<img width="532" height="180" alt="image" src="https://github.com/user-attachments/assets/7dfffe27-7f14-41cf-bd51-56bbd620b071" />
 
-<img width="725" height="42" alt="image" src="https://github.com/user-attachments/assets/13c020f0-0f0b-4790-b494-7f3d57adb13f" />
 
 #### 🎯 Educational Objective
 
